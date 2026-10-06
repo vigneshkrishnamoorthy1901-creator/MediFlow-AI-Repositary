@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediFlow AI – Prescription Scanner</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#home">＋ MediFlow <span>AI</span></a>
+    <div class="links"><a href="#scan">Scan</a><a href="#results">Medicines</a><a href="#reminders">Reminders</a><a href="#records">Records</a></div>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="wrap">
+    <h1>Scan your prescription.<br>Never miss a dose.</h1>
+    <p>Gemini AI reads your prescription image or PDF, organises medicines, dosages and durations, and helps you set reminders.</p>
+    <a class="btn big" href="#scan">Get started</a>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="scan" class="card">
+    <h2>1. Scan prescription</h2>
+    <div class="grid3">
+      <div><label>Patient name</label><input id="patientName" placeholder="Enter name"></div>
+      <div><label>Age</label><input id="patientAge" type="number" placeholder="Age"></div>
+      <div><label>Document language</label>
+        <select id="sourceLanguage"><option>English</option><option>Tamil</option><option>Malayalam</option><option>Hindi</option></select></div>
+    </div>
+    <div class="drop">
+      <input id="recordFile" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.pdf" hidden>
+      <input id="cameraFile" type="file" accept="image/*" capture="environment" hidden>
+      <button class="btn alt" id="chooseBtn">📁 Choose file</button>
+      <button class="btn alt" id="photoBtn">📷 Take photo</button>
+      <span id="fileName" class="muted">No file selected</span>
+    </div>
+    <p class="muted">The selected prescription is sent to Google Gemini AI to identify medicines. Only upload records you are authorized to share.</p>
+    <video id="cam" autoplay playsinline hidden></video>
+    <button class="btn" id="snapBtn" hidden>Capture</button>
+    <button class="btn" id="uploadButton">Upload &amp; Read</button>
+    <div id="uploadStatus" class="status"></div>
+  </section>
+
+  <section id="results" class="card">
+    <h2>2. Medicines <small id="srcTag"></small></h2>
+    <p class="muted">AI can make mistakes – click any cell to correct it before setting reminders.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>#</th><th>Medicine</th><th>Dosage</th><th>Frequency</th><th>Duration</th><th>Reminder</th></tr></thead>
+      <tbody id="medBody"><tr><td colspan="6" class="muted">Scan a prescription to see medicines here.</td></tr></tbody>
+    </table></div>
+  </section>
+
+  <section id="reminders" class="card">
+    <h2>3. Reminders</h2>
+    <button class="btn alt" id="notifBtn">🔔 Enable notifications</button>
+    <ul id="remList"><li class="muted">No reminders set.</li></ul>
+  </section>
+
+  <section id="records" class="card">
+    <h2>Health records</h2>
+    <div id="healthTimeline"></div>
+  </section>
+
+  <p class="disclaimer"><strong>Important:</strong> MediFlow organises information from documents. It does not give medical advice. Always confirm with your doctor or pharmacist.</p>
+</main>
+<footer>MediFlow AI · Prescription scanner &amp; health records</footer>
+</body>
+</html>
